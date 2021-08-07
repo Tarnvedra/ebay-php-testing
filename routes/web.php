@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Ebay\Services\EbayOAuthToken;
+use App\Http\Controllers\Ebay\Services\Inventory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -28,3 +30,9 @@ Route::get('/ebay', [EbayController::class, 'index'])->name('ebay.home');
 Route::get('/ebay/contact', [EbayController::class, 'contact'])->name('ebay.contact');
 Route::get('/ebay/create', [EbayController::class, 'create'])->name('ebay.create');
 Route::post('/ebay/store', [EbayController::class, 'store'])->name('ebay.store');
+
+Route::get('/ebay/time', [EbayController::class, 'getTime'])->name('ebay.time');
+
+Route::get('/ebay/auth', [EbayOAuthToken::class, 'authToken'])->name('get.token');
+Route::get('/ebay/inv', [Inventory::class, 'createItem'])->name('create.item');
+

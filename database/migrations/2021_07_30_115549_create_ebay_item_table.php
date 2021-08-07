@@ -16,6 +16,8 @@ class CreateEbayItemTable extends Migration
         Schema::create('ebay_item', function (Blueprint $table) {
             $table->id();
             $table->string('sku');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products');
             $table->json('availability');
             $table->json('aspects');
             $table->string('brand');
